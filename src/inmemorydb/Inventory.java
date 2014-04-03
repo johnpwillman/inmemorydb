@@ -6,10 +6,11 @@ import java.util.Iterator;
 public class Inventory {
 	private int uniqueIDSequence;
 	
-	private Hashtable<Integer, Movie> movies = new Hashtable<Integer, Movie>();
+	private Hashtable<Integer, Movie> movies;
 	
 	public Inventory() {
 		uniqueIDSequence = 0;
+		movies = new Hashtable<Integer, Movie>();
 	}
 	
 	public int addMovie(String movieName, double moviePrice, int movieQty) {
