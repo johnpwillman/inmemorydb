@@ -13,7 +13,6 @@ public class TestInventoryManagement {
 		int movieQty = 1;
 		
 		Inventory inv = new Inventory();
-		Movie m;
 		
 		int uid;
 		
@@ -23,9 +22,11 @@ public class TestInventoryManagement {
 				movieQty
 				);
 		
-		m = inv.getMovie(uid);
-		
-		assertEquals("Movie name should be equal to" + movieName, m.getName(), movieName);
+		assertEquals(
+				"Movie name should be equal to" + movieName, 
+				inv.getMovieName(uid), 
+				movieName
+				);
 	}
 	
 	@Test
@@ -35,7 +36,6 @@ public class TestInventoryManagement {
 		int movieQty = 2;
 		
 		Inventory inv = new Inventory();
-		Movie m;
 		
 		int uid;
 		
@@ -45,13 +45,11 @@ public class TestInventoryManagement {
 				movieQty
 				);
 		
-		m = inv.getMovie(uid);
-		
 		inv.sellMovie(uid);
 		
 		assertEquals(
 				"Movie qty should be equal to" + Integer.toString(movieQty - 1), 
-				m.getQty(), 
+				inv.getMovieQty(uid), 
 				movieQty - 1
 				);
 	}
@@ -64,7 +62,6 @@ public class TestInventoryManagement {
 		int qtyToAdd = 2;
 		
 		Inventory inv = new Inventory();
-		Movie m;
 		
 		int uid;
 		
@@ -74,19 +71,17 @@ public class TestInventoryManagement {
 				movieQty
 				);
 		
-		m = inv.getMovie(uid);
-		
-		inv.addQty(uid, qtyToAdd);
+		inv.addMovieQty(uid, qtyToAdd);
 		
 		assertEquals(
 				"Movie qty should be equal to" + Integer.toString(movieQty + qtyToAdd), 
-				m.getQty(), 
+				inv.getMovieQty(uid), 
 				movieQty + qtyToAdd
 				);
 	}
 	
 	@Test
-	public void testChangePrice() {
+	public void testSetPrice() {
 		String movieName = "Titanic";
 		double moviePrice = 3.00;
 		int movieQty = 1;
@@ -94,7 +89,6 @@ public class TestInventoryManagement {
 		double newPrice = 5.00;
 		
 		Inventory inv = new Inventory();
-		Movie m;
 		
 		int uid;
 		
@@ -104,14 +98,11 @@ public class TestInventoryManagement {
 				movieQty
 				);
 		
-		m = inv.getMovie(uid);
+		inv.setMoviePrice(uid, newPrice);
 		
-		inv.changePrice(uid, newPrice);
-		
-		assertEquals(
+		assertTrue(
 				"Movie qty should be equal to" + Double.toString(newPrice), 
-				m.getPrice(), 
-				newPrice
+				inv.getMoviePrice(uid) == newPrice
 				);
 	}
 	
@@ -122,7 +113,6 @@ public class TestInventoryManagement {
 		int movieQty = 1;
 		
 		Inventory inv = new Inventory();
-		Movie m;
 		
 		int uid;
 		
@@ -132,10 +122,9 @@ public class TestInventoryManagement {
 				movieQty
 				);
 		
-		assertEquals(
+		assertTrue(
 				"Movie price should be equal to" + Double.toString(moviePrice), 
-				inv.getPrice(uid), 
-				moviePrice
+				inv.getMoviePrice(uid) == moviePrice
 				);
 	}
 	
@@ -146,7 +135,6 @@ public class TestInventoryManagement {
 		int movieQty = 1;
 		
 		Inventory inv = new Inventory();
-		Movie m;
 		
 		int uid;
 		
@@ -156,10 +144,9 @@ public class TestInventoryManagement {
 				movieQty
 				);
 		
-		assertEquals(
+		assertTrue(
 				"Movie price should be equal to" + Double.toString(moviePrice), 
-				inv.getPrice(movieName), 
-				moviePrice
+				inv.getMoviePrice(movieName) == moviePrice
 				);
 	}
 	
@@ -170,7 +157,6 @@ public class TestInventoryManagement {
 		int movieQty = 1;
 		
 		Inventory inv = new Inventory();
-		Movie m;
 		
 		int uid;
 		
@@ -182,7 +168,7 @@ public class TestInventoryManagement {
 		
 		assertEquals(
 				"Movie price should be equal to" + Integer.toString(movieQty), 
-				inv.getQty(uid), 
+				inv.getMovieQty(uid), 
 				movieQty
 				);
 	}
@@ -194,7 +180,6 @@ public class TestInventoryManagement {
 		int movieQty = 1;
 		
 		Inventory inv = new Inventory();
-		Movie m;
 		
 		int uid;
 		
@@ -206,7 +191,7 @@ public class TestInventoryManagement {
 		
 		assertEquals(
 				"Movie price should be equal to" + Integer.toString(movieQty), 
-				inv.getQty(movieName), 
+				inv.getMovieQty(movieName), 
 				movieQty
 				);
 	}

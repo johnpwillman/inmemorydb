@@ -21,23 +21,23 @@ public class Movie {
 		this.id = id;
 	}
 
-	private int getQty() {
+	public int getQty() {
 		return qty;
 	}
 
-	private void setQty(int qty) {
+	public void setQty(int qty) {
 		this.qty = qty;
 	}
 
-	private double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	private void setPrice(double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
-	private String getName() {
+	public String getName() {
 		return name;
 	}
 
