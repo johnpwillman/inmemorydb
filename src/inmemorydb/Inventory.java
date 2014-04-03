@@ -22,18 +22,18 @@ public class Inventory {
 		return uniqueID;
 	}
 	
-	public String getMovieName(int uid) {
-		return movies.get(uid).getName();
+	public String getMovieName(int movieID) {
+		return movies.get(movieID).getName();
 	}
 	
-	public void sellMovie(int uid) {
-		Movie m = movies.get(uid);
+	public void sellMovie(int movieID) {
+		Movie m = movies.get(movieID);
 		
 		m.setQty(m.getQty() - 1);
 	}
 	
-	public int getMovieQty(int uid) {
-		return movies.get(uid).getQty();
+	public int getMovieQty(int movieID) {
+		return movies.get(movieID).getQty();
 	}
 	
 	public int getMovieQty(String movieName) {
@@ -52,18 +52,18 @@ public class Inventory {
 		return qty;
 	}
 	
-	public void addMovieQty(int uid, int qtyToAdd) {
-		Movie m = movies.get(uid);
+	public void addMovieQty(int movieID, int qtyToAdd) {
+		Movie m = movies.get(movieID);
 		
 		m.setQty(m.getQty() + qtyToAdd);
 	}
 	
-	public void setMoviePrice(int uid, double newPrice) {
-		movies.get(uid).setPrice(newPrice);
+	public void setMoviePrice(int movieID, double newPrice) {
+		movies.get(movieID).setPrice(newPrice);
 	}
 	
-	public double getMoviePrice(int uid) {
-		return movies.get(uid).getPrice();
+	public double getMoviePrice(int movieID) {
+		return movies.get(movieID).getPrice();
 	}
 	
 	public double getMoviePrice(String movieName) {
