@@ -136,9 +136,7 @@ public class TestInventoryManagement {
 		
 		Inventory inv = new Inventory();
 		
-		int uid;
-		
-		uid = inv.addMovie(
+		inv.addMovie(
 				movieName,
 				moviePrice,
 				movieQty
@@ -181,9 +179,7 @@ public class TestInventoryManagement {
 		
 		Inventory inv = new Inventory();
 		
-		int uid;
-		
-		uid = inv.addMovie(
+		inv.addMovie(
 				movieName,
 				moviePrice,
 				movieQty

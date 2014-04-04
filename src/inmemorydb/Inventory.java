@@ -1,5 +1,6 @@
 package inmemorydb;
 
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 
@@ -82,12 +83,39 @@ public class Inventory {
 		return price;
 	}
 	
+	///////////////////////////////////////////////////////////
+	// Memento Code
+	///////////////////////////////////////////////////////////
+	public Memento saveToMemento() {
+		return new Memento(movies);
+	}
+	
+	public void restoreFromMemento(Memento memento) {
+		movies = memento.getSavedState();
+		
+		setUniqueIDSequence(maxSequenceID());
+	}
+	
+	private int maxSequenceID() {
+		Enumeration<Integer> keys = movies.keys();
+		int maxSequenceID = 0;
+		int holdValue;
+		
+		while(keys.hasMoreElements()) {
+			holdValue = keys.nextElement();
+			
+			maxSequenceID = holdValue > maxSequenceID ? holdValue : maxSequenceID;
+		}
+		
+		return maxSequenceID;
+	}
+	
 	private int getNewUniqueID() {
 		return ++uniqueIDSequence;
 	}
 	
-	private void setUniqueIDSequence(int i) {
-		uniqueIDSequence = i;
+	private void setUniqueIDSequence(int newSequenceID) {
+		uniqueIDSequence = newSequenceID;
 	}
 	
 }
