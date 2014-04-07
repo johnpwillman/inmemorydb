@@ -16,11 +16,13 @@ public class TestInventoryManagement {
 		
 		int uid;
 		
-		uid = inv.addMovie(
+		inv.addMovie(
 				movieName,
 				moviePrice,
 				movieQty
 				);
+		
+		uid = inv.getCurrentUniqueIDSequence();
 		
 		assertEquals(
 				"Movie name should be equal to" + movieName, 
@@ -39,11 +41,13 @@ public class TestInventoryManagement {
 		
 		int uid;
 		
-		uid = inv.addMovie(
+		inv.addMovie(
 				movieName,
 				moviePrice,
 				movieQty
 				);
+		
+		uid = inv.getCurrentUniqueIDSequence();
 		
 		inv.sellMovie(uid);
 		
@@ -65,11 +69,13 @@ public class TestInventoryManagement {
 		
 		int uid;
 		
-		uid = inv.addMovie(
+		inv.addMovie(
 				movieName,
 				moviePrice,
 				movieQty
 				);
+		
+		uid = inv.getCurrentUniqueIDSequence();
 		
 		inv.addMovieQty(uid, qtyToAdd);
 		
@@ -92,11 +98,13 @@ public class TestInventoryManagement {
 		
 		int uid;
 		
-		uid = inv.addMovie(
+		inv.addMovie(
 				movieName,
 				moviePrice,
 				movieQty
 				);
+		
+		uid = inv.getCurrentUniqueIDSequence();
 		
 		inv.setMoviePrice(uid, newPrice);
 		
@@ -116,11 +124,13 @@ public class TestInventoryManagement {
 		
 		int uid;
 		
-		uid = inv.addMovie(
+		inv.addMovie(
 				movieName,
 				moviePrice,
 				movieQty
 				);
+		
+		uid = inv.getCurrentUniqueIDSequence();
 		
 		assertTrue(
 				"Movie price should be equal to" + Double.toString(moviePrice), 
@@ -158,11 +168,13 @@ public class TestInventoryManagement {
 		
 		int uid;
 		
-		uid = inv.addMovie(
+		inv.addMovie(
 				movieName,
 				moviePrice,
 				movieQty
 				);
+		
+		uid = inv.getCurrentUniqueIDSequence();
 		
 		assertEquals(
 				"Movie price should be equal to" + Integer.toString(movieQty), 

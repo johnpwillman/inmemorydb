@@ -14,13 +14,11 @@ public class Inventory extends AbstractInventory {
 		movies = new Hashtable<Integer, Movie>();
 	}
 	
-	public int addMovie(String movieName, double moviePrice, int movieQty) {
+	public void addMovie(String movieName, double moviePrice, int movieQty) {
 		int uniqueID = getNewUniqueID();
 		Movie m = new Movie(uniqueID, movieName, moviePrice, movieQty);
 		
 		movies.put(uniqueID, m);
-		
-		return uniqueID;
 	}
 	
 	public String getMovieName(int movieID) {
@@ -94,6 +92,10 @@ public class Inventory extends AbstractInventory {
 		movies = memento.getSavedState();
 		
 		setUniqueIDSequence(maxSequenceID());
+	}
+	
+	public int getCurrentUniqueIDSequence() {
+		return uniqueIDSequence;
 	}
 	
 	private int maxSequenceID() {

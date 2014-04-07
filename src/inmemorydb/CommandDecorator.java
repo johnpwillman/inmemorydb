@@ -11,8 +11,8 @@ public class CommandDecorator extends InventoryDecorator {
 	}
 
 	@Override
-	public int addMovie(String movieName, double moviePrice, int movieQty) {
-		return decoratedInventory.addMovie(movieName, moviePrice, movieQty);
+	public void addMovie(String movieName, double moviePrice, int movieQty) {
+		c = new AddMovieCommand(decoratedInventory, movieName, moviePrice, movieQty);
 	}
 
 	@Override

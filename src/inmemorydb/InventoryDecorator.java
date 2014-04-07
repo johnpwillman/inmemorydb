@@ -9,8 +9,8 @@ public class InventoryDecorator extends AbstractInventory {
 	}
 
 	@Override
-	public int addMovie(String movieName, double moviePrice, int movieQty) {
-		return decoratedInventory.addMovie(movieName, moviePrice, movieQty);
+	public void addMovie(String movieName, double moviePrice, int movieQty) {
+		decoratedInventory.addMovie(movieName, moviePrice, movieQty);
 	}
 
 	@Override
