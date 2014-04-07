@@ -2,7 +2,7 @@ package inmemorydb;
 
 public abstract class AbstractInventory {
 	
-	public abstract int addMovie();
+	public abstract int addMovie(String movieName, double moviePrice, int movieQty);
 	
 	public abstract void sellMovie(int movieID);
 	

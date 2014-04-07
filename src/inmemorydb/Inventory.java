@@ -4,7 +4,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 
-public class Inventory {
+public class Inventory extends AbstractInventory {
 	private int uniqueIDSequence;
 	
 	private Hashtable<Integer, Movie> movies;
