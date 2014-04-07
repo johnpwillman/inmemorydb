@@ -13,21 +13,25 @@ public class CommandDecorator extends InventoryDecorator {
 	@Override
 	public void addMovie(String movieName, double moviePrice, int movieQty) {
 		c = new AddMovieCommand(decoratedInventory, movieName, moviePrice, movieQty);
+		c.execute();
 	}
 
 	@Override
 	public void sellMovie(int movieID) {
 		c = new SellMovieCommand(decoratedInventory, movieID);
+		c.execute();
 	}
 
 	@Override
 	public void addMovieQty(int movieID, int qtyToAdd) {
 		c = new AddMovieQtyCommand(decoratedInventory, movieID, qtyToAdd);
+		c.execute();
 	}
 
 	@Override
 	public void setMoviePrice(int movieID, double newPrice) {
 		c = new SetMoviePriceCommand(decoratedInventory, movieID, newPrice);
+		c.execute();
 	}
 
 	@Override
