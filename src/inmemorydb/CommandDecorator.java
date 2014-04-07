@@ -22,13 +22,12 @@ public class CommandDecorator extends InventoryDecorator {
 
 	@Override
 	public void addMovieQty(int movieID, int qtyToAdd) {
-		decoratedInventory.addMovieQty(movieID, qtyToAdd);
-		
+		c = new AddMovieQtyCommand(decoratedInventory, movieID, qtyToAdd);
 	}
 
 	@Override
 	public void setMoviePrice(int movieID, double newPrice) {
-		decoratedInventory.setMoviePrice(movieID, newPrice);
+		c = new SetMoviePriceCommand(decoratedInventory, movieID, newPrice);
 	}
 
 	@Override
