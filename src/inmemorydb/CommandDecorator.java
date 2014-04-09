@@ -40,8 +40,8 @@ public class CommandDecorator extends InventoryDecorator {
 	}
 
 	@Override
-	public void restoreFromMemento(Memento memento) {
-		decoratedInventory.restoreFromMemento(memento);
+	public void restoreFromMemento() {
+		decoratedInventory.restoreFromMemento();
 	}
 
 }

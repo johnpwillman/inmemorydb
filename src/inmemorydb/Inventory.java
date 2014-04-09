@@ -90,8 +90,9 @@ public class Inventory extends AbstractInventory {
 		careTaker.saveMemento(new Memento(movies));
 	}
 	
-	public void restoreFromMemento(Memento memento) {
-		movies = memento.getSavedState();
+	public void restoreFromMemento() {
+		movies = careTaker.getMemento().getSavedState();
+		//movies = memento.getSavedState();
 		
 		setUniqueIDSequence(maxSequenceID());
 	}

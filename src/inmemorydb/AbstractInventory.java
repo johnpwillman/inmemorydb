@@ -22,6 +22,6 @@ public abstract class AbstractInventory {
 	
 	public abstract void saveToMemento();
 	
-	public abstract void restoreFromMemento(Memento memento);
+	public abstract void restoreFromMemento();
 
 }

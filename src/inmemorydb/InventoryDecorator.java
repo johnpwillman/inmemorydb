@@ -60,8 +60,8 @@ public class InventoryDecorator extends AbstractInventory {
 	}
 
 	@Override
-	public void restoreFromMemento(Memento memento) {
-		decoratedInventory.restoreFromMemento(memento);
+	public void restoreFromMemento() {
+		decoratedInventory.restoreFromMemento();
 	}
 	
 }

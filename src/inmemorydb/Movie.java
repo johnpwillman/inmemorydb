@@ -1,6 +1,8 @@
 package inmemorydb;
 
-public class Movie {
+import java.io.Serializable;
+
+public class Movie implements Serializable {
 	private int id;
 	private int qty;
 	private double price;
