@@ -1,12 +1,2 @@
-addMovie,
-addMovie,
-addMovie,
-addMovie,
-addMovie,
-addMovie,
-addMovie,
-addMovie,
-addMovie,
-addMovie,
-addMovie,
-addMovie,
+setMoviePrice|1|4.0
+addMovieQty|1|7
