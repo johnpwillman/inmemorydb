@@ -7,12 +7,14 @@ import org.junit.Test;
 public class TestMementoPattern {
 
 	@Test
-	public void testMementoCreation() {
+	public void testMemento() {
 		String movieName = "Titanic";
 		double moviePrice = 3.00;
 		int movieQty = 1;
 		
 		Inventory inv = new Inventory();
+		
+		Inventory inv2 = new Inventory();
 		
 		int uid;
 		
@@ -26,7 +28,15 @@ public class TestMementoPattern {
 		
 		inv.saveToMemento();
 		
-		assertTrue(true);
+		inv = null;
+		
+		inv2.restoreFromMemento();
+		
+		assertEquals(
+				"Name of movie in restored inventory should match 'Titanic'",
+				inv2.getMovieName(uid),
+				movieName
+				);
 	}
 
 }
