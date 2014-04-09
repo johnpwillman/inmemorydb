@@ -23,5 +23,7 @@ public abstract class AbstractInventory {
 	public abstract void saveToMemento();
 	
 	public abstract void restoreFromMemento();
+	
+	public abstract int getCurrentUniqueIDSequence();
 
 }

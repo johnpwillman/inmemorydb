@@ -63,5 +63,10 @@ public class InventoryDecorator extends AbstractInventory {
 	public void restoreFromMemento() {
 		decoratedInventory.restoreFromMemento();
 	}
+
+	@Override
+	public int getCurrentUniqueIDSequence() {
+		return decoratedInventory.getCurrentUniqueIDSequence();
+	}
 	
 }
