@@ -130,15 +130,16 @@ public class CommandDecorator extends InventoryDecorator {
 			
 			in.close();
 		} catch(FileNotFoundException e) {
-			//File doesn't exist yet
-			//Do Nothing
+			System.out.println("No Commands to restore.");
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	private void deleteCommands() {
-		commandFile.delete();
+		if (!commandFile.delete()) {
+			System.out.println("Cannot delete: File does not exist.");
+		}
 	}
 
 }
