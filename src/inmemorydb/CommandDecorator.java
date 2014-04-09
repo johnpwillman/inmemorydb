@@ -105,30 +105,30 @@ public class CommandDecorator extends InventoryDecorator {
 				cmdAsArray = singleCommand.split("[" + cmdDelim + "]");
 				
 				switch (cmdAsArray[0]) {
-				case "addMovie":		c = new AddMovieCommand(
-											decoratedInventory,
-											cmdAsArray[1], 
-											Double.parseDouble(cmdAsArray[2]),
-											Integer.parseInt(cmdAsArray[3])
-											);
-										break;
-				case "sellMovie":		c = new SellMovieCommand(
-											decoratedInventory,
-											Integer.parseInt(cmdAsArray[1])
-											);
-										break;
-				case "addMovieQty":		c = new AddMovieQtyCommand(
-											decoratedInventory,
-											Integer.parseInt(cmdAsArray[1]), 
-											Integer.parseInt(cmdAsArray[2])
-											);
-										break;
-				case "setMoviePrice":	c = new SetMoviePriceCommand(
-											decoratedInventory,
-											Integer.parseInt(cmdAsArray[1]), 
-											Double.parseDouble(cmdAsArray[2])
-											);
-										break;
+					case "addMovie":		c = new AddMovieCommand(
+												decoratedInventory,
+												cmdAsArray[1], 
+												Double.parseDouble(cmdAsArray[2]),
+												Integer.parseInt(cmdAsArray[3])
+												);
+											break;
+					case "sellMovie":		c = new SellMovieCommand(
+												decoratedInventory,
+												Integer.parseInt(cmdAsArray[1])
+												);
+											break;
+					case "addMovieQty":		c = new AddMovieQtyCommand(
+												decoratedInventory,
+												Integer.parseInt(cmdAsArray[1]), 
+												Integer.parseInt(cmdAsArray[2])
+												);
+											break;
+					case "setMoviePrice":	c = new SetMoviePriceCommand(
+												decoratedInventory,
+												Integer.parseInt(cmdAsArray[1]), 
+												Double.parseDouble(cmdAsArray[2])
+												);
+											break;
 				}
 				
 				c.execute();
