@@ -2,6 +2,7 @@ package inmemorydb;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -23,7 +24,7 @@ public class Caretaker {
 			out.writeObject(m);
 			out.close();
 			fileOut.close();
-			System.out.println("Mementos saved to '" + mementoFile.getPath() + "' file");
+			System.out.println("Memento saved to '" + mementoFile.getPath() + "' file");
 		} catch(IOException i) {
 			i.printStackTrace();
 		}
@@ -37,10 +38,12 @@ public class Caretaker {
 			m = (Memento) in.readObject();
 			in.close();
 			fileIn.close();
+		} catch(FileNotFoundException f) {
+			System.out.println("No mementos to restore.");
 		} catch(IOException i) {
 			i.printStackTrace();
 		} catch(ClassNotFoundException c) {
-			System.out.println("Employee class not found");
+			System.out.println("Memento class not found");
 			c.printStackTrace();
 		}
 		return m;

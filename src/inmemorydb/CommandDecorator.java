@@ -3,6 +3,7 @@ package inmemorydb;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -128,6 +129,9 @@ public class CommandDecorator extends InventoryDecorator {
 			}
 			
 			in.close();
+		} catch(FileNotFoundException e) {
+			//File doesn't exist yet
+			//Do Nothing
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
