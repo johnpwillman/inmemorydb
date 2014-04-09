@@ -105,27 +105,34 @@ public class CommandDecorator extends InventoryDecorator {
 				cmdAsArray = singleCommand.split("[" + cmdDelim + "]");
 				
 				switch (cmdAsArray[0]) {
-				case "addMovie":		super.addMovie(
+				case "addMovie":		c = new AddMovieCommand(
+											decoratedInventory,
 											cmdAsArray[1], 
 											Double.parseDouble(cmdAsArray[2]),
 											Integer.parseInt(cmdAsArray[3])
 											);
 										break;
-				case "sellMovie":		super.sellMovie(
+				case "sellMovie":		c = new SellMovieCommand(
+											decoratedInventory,
 											Integer.parseInt(cmdAsArray[1])
 											);
 										break;
-				case "addMovieQty":		super.addMovieQty(
+				case "addMovieQty":		c = new AddMovieQtyCommand(
+											decoratedInventory,
 											Integer.parseInt(cmdAsArray[1]), 
 											Integer.parseInt(cmdAsArray[2])
 											);
 										break;
-				case "setMoviePrice":	super.setMoviePrice(
+				case "setMoviePrice":	c = new SetMoviePriceCommand(
+											decoratedInventory,
 											Integer.parseInt(cmdAsArray[1]), 
 											Double.parseDouble(cmdAsArray[2])
 											);
 										break;
 				}
+				
+				c.execute();
+				
 			}
 			
 			in.close();
