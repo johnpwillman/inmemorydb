@@ -35,8 +35,8 @@ public class CommandDecorator extends InventoryDecorator {
 	}
 
 	@Override
-	public Memento saveToMemento() {
-		return decoratedInventory.saveToMemento();
+	public void saveToMemento() {
+		decoratedInventory.saveToMemento();
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public abstract class AbstractInventory {
 	
 	public abstract double getMoviePrice(String movieName);
 	
-	public abstract Memento saveToMemento();
+	public abstract void saveToMemento();
 	
 	public abstract void restoreFromMemento(Memento memento);
 

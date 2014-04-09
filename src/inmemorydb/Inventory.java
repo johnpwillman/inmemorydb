@@ -9,6 +9,8 @@ public class Inventory extends AbstractInventory {
 	
 	private Hashtable<Integer, Movie> movies;
 	
+	private Caretaker careTaker = new Caretaker();
+	
 	public Inventory() {
 		uniqueIDSequence = 0;
 		movies = new Hashtable<Integer, Movie>();
@@ -84,8 +86,8 @@ public class Inventory extends AbstractInventory {
 	///////////////////////////////////////////////////////////
 	// Memento Code
 	///////////////////////////////////////////////////////////
-	public Memento saveToMemento() {
-		return new Memento(movies);
+	public void saveToMemento() {
+		careTaker.saveMemento(new Memento(movies));
 	}
 	
 	public void restoreFromMemento(Memento memento) {
