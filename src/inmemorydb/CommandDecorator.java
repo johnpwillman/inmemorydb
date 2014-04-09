@@ -144,9 +144,22 @@ public class CommandDecorator extends InventoryDecorator {
 	}
 	
 	private void deleteCommands() {
+		try {
+			BufferedWriter out = new BufferedWriter(new FileWriter(commandFile));
+			out.write("");
+			
+			out.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		/* Old deletion code deletes entire file
 		if (!commandFile.delete()) {
 			System.out.println("Cannot delete: File does not exist.");
+		} else {
+			System.out.println(commandFile.getPath() + " deleted");
 		}
+		*/
 	}
 
 }
