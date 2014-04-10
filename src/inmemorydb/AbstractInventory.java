@@ -1,5 +1,14 @@
 package inmemorydb;
 
+/**
+ * AbstractInventory is the parent class that defines the public methods of stand-
+ * alone Inventory objects as well as those that are decorated. It functions as the
+ * interface for the client application to access the movie Inventory.
+ * 
+ * @author John Willman
+ * RedID: 809362691
+ *
+ */
 public abstract class AbstractInventory {
 	
 	public abstract void addMovie(String movieName, double moviePrice, int movieQty);
