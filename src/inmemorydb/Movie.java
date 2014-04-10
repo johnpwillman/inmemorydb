@@ -2,6 +2,15 @@ package inmemorydb;
 
 import java.io.Serializable;
 
+/**
+ * Movie is a data class which represents a single Movie object in our 
+ * Inventory database. Movies have a unique identifying integer, a
+ * quantity, a price, and a name.
+ * 
+ * @author John Willman
+ * RedID: 809362691
+ *
+ */
 public class Movie implements Serializable {
 	private int id;
 	private int qty;

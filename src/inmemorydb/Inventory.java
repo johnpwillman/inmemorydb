@@ -4,6 +4,16 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+/**
+ * Inventory is an interface to the client program which allows
+ * for management of the Movie Database. It handles adding,
+ * selling, and modifying of movie records as well as backup
+ * of the database itself through the Memento Pattern.
+ * 
+ * @author John Willman
+ * RedID: 809362691
+ *
+ */
 public class Inventory extends AbstractInventory {
 	private int uniqueIDSequence;
 	
