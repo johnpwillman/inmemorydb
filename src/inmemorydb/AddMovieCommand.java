@@ -27,6 +27,11 @@ public class AddMovieCommand extends Command {
 		qtyOfNewMovie = movieQty;
 	}
 
+	/**
+	 * Execute method in AddMovieCommand calls the addMovie method on the 
+	 * subject Inventory object using the params passed in through the
+	 * constructor.
+	 */
 	@Override
 	public void execute() {
 		subjectInventory.addMovie(nameOfNewMovie, priceOfNewMovie, qtyOfNewMovie);

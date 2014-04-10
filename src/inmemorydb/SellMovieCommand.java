@@ -18,6 +18,11 @@ public class SellMovieCommand extends Command {
 		movieToSell = movieID;
 	}
 
+	/**
+	 * Execute method in SellMovieCommand calls the sellMovie method 
+	 * in the subject Inventory object using the parameters passed in 
+	 * via the constructor.
+	 */
 	@Override
 	public void execute() {
 		subjectInventory.sellMovie(movieToSell);

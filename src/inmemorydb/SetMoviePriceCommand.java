@@ -20,6 +20,11 @@ public class SetMoviePriceCommand extends Command {
 		updatedPrice = newPrice;
 	}
 
+	/**
+	 * Execute method in SetMoviePriceCommand calls the setMoviePrice
+	 * method in the subject Inventory object using the parameters passed 
+	 * in via the constructor.
+	 */
 	@Override
 	public void execute() {
 		subjectInventory.setMoviePrice(movieToUpdate, updatedPrice);
