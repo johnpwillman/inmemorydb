@@ -24,6 +24,8 @@ public class CommandDecorator extends InventoryDecorator {
 	private Command c;
 	private File commandFile = new File("commands");
 	private String cmdDelim = "|";
+	private int numCommands = 0;
+	private final int maxCommands = 1000;
 
 	/**
 	 * CommandDecorator serializes every command that changes the state of the
@@ -119,6 +121,7 @@ public class CommandDecorator extends InventoryDecorator {
 	public void restoreFromMemento() {
 		decoratedInventory.restoreFromMemento();
 		
+		numCommands = 0;//Reset command counter
 		executeCommandsFromFile();
 	}
 	
@@ -130,11 +133,19 @@ public class CommandDecorator extends InventoryDecorator {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(commandFile, true));
 			out.write(commandToWrite);
+			
+			numCommands++;
+			
 			out.newLine();
 			
 			out.close();
 		} catch(IOException e) {
 			e.printStackTrace();
+		}
+		
+		//Save a memento if command file becomes too large.
+		if (numCommands >= maxCommands) {
+			saveToMemento();
 		}
 	}
 	
@@ -180,6 +191,7 @@ public class CommandDecorator extends InventoryDecorator {
 				}
 				
 				c.execute();
+				numCommands++;
 				
 			}
 			
@@ -199,7 +211,7 @@ public class CommandDecorator extends InventoryDecorator {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(commandFile));
 			out.write("");
-			
+			numCommands = 0;//Reset command counter
 			out.close();
 		} catch(IOException e) {
 			e.printStackTrace();
