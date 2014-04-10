@@ -8,6 +8,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * CommandDecorator is a child of InventoryDecorator which adds Command
+ * Pattern functionality onto the regular functionality of the Inventory
+ * Class. Commands are serialized when they are called and are deserialized
+ * and executed when a memento is restored.
+ * 
+ * @author John Willman
+ * RedID: 809362691
+ *
+ */
 public class CommandDecorator extends InventoryDecorator {
 	
 	private Inventory decoratedInventory;

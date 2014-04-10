@@ -1,5 +1,16 @@
 package inmemorydb;
 
+/**
+ * InventoryDecorator is a concrete instance of an AbstractInventory
+ * that wraps the functionality of an Inventory object and adds no
+ * new functionality. This implementation follows the Decorator
+ * Pattern and will allow its children to attach extra functionality
+ * to Inventory objects.
+ * 
+ * @author John Willman
+ * RedID: 809362691
+ *
+ */
 public class InventoryDecorator extends AbstractInventory {
 	
 	private Inventory decoratedInventory;

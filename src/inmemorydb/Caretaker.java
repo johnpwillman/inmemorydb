@@ -8,6 +8,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * Caretaker is a member of the Memento Pattern implementation in this
+ * project. It's job is to serialize Memento objects to disk and to 
+ * deserialize them from the disk.
+ * 
+ * @author John Willman
+ * RedID: 809362691
+ *
+ */
 public class Caretaker {
 	
 	private File mementoFile = new File("mementos");
@@ -24,7 +33,9 @@ public class Caretaker {
 			out.writeObject(m);
 			out.close();
 			fileOut.close();
-			System.out.println("Memento saved to '" + mementoFile.getPath() + "' file");
+			System.out.println(
+					"Memento saved to '" + mementoFile.getPath() + "' file"
+					);
 		} catch(IOException i) {
 			i.printStackTrace();
 		}
