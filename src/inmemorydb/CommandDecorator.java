@@ -25,11 +25,21 @@ public class CommandDecorator extends InventoryDecorator {
 	private File commandFile = new File("commands");
 	private String cmdDelim = "|";
 
+	/**
+	 * CommandDecorator serializes every command that changes the state of the
+	 * database in an Inventory and defers to the Inventory object itself when
+	 * there is no state change.
+	 * @param inventoryToDecorate
+	 */
 	public CommandDecorator(Inventory inventoryToDecorate) {
 		super(inventoryToDecorate);
 		decoratedInventory = inventoryToDecorate;
 	}
 
+	/**
+	 * Create and execute AddMovieCommand object for decorated Inventory. Command
+	 * written to file for later restore.
+	 */
 	@Override
 	public void addMovie(String movieName, double moviePrice, int movieQty) {
 		c = new AddMovieCommand(decoratedInventory, movieName, moviePrice, movieQty);
@@ -43,6 +53,10 @@ public class CommandDecorator extends InventoryDecorator {
 				);
 	}
 
+	/**
+	 * Create and execute SellMovieCcmmand object for decorated Inventory.
+	 * Command written to file for later restore.
+	 */
 	@Override
 	public void sellMovie(int movieID) {
 		c = new SellMovieCommand(decoratedInventory, movieID);
@@ -54,6 +68,10 @@ public class CommandDecorator extends InventoryDecorator {
 				);
 	}
 
+	/**
+	 * Create and execute AddMoveQty object for decorated Inventory. Command
+	 * written to file for later restore.
+	 */
 	@Override
 	public void addMovieQty(int movieID, int qtyToAdd) {
 		c = new AddMovieQtyCommand(decoratedInventory, movieID, qtyToAdd);
@@ -66,6 +84,10 @@ public class CommandDecorator extends InventoryDecorator {
 				);
 	}
 
+	/**
+	 * Create and execute SetMoviePrice object for decorated Inventory. Command
+	 * written to file for later restore.
+	 */
 	@Override
 	public void setMoviePrice(int movieID, double newPrice) {
 		c = new SetMoviePriceCommand(decoratedInventory, movieID, newPrice);
@@ -77,7 +99,11 @@ public class CommandDecorator extends InventoryDecorator {
 				Double.toString(newPrice)
 				);
 	}
-
+	
+	/**
+	 * In addition to regular functionality, saveToMemento also deletes the 
+	 * stored record of commands since last memento.
+	 */
 	@Override
 	public void saveToMemento() {
 		decoratedInventory.saveToMemento();
@@ -85,6 +111,10 @@ public class CommandDecorator extends InventoryDecorator {
 		deleteCommands();
 	}
 
+	/**
+	 * In addition to regular functionality, restoreFromMemento also
+	 * restores the commands executed since last memento was saved.
+	 */
 	@Override
 	public void restoreFromMemento() {
 		decoratedInventory.restoreFromMemento();
@@ -92,6 +122,10 @@ public class CommandDecorator extends InventoryDecorator {
 		executeCommandsFromFile();
 	}
 	
+	/**
+	 * Stores a string representing a command to a file for later retrieval.
+	 * @param commandToWrite
+	 */
 	private void writeCommandToFile(String commandToWrite) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(commandFile, true));
@@ -104,6 +138,10 @@ public class CommandDecorator extends InventoryDecorator {
 		}
 	}
 	
+	/**
+	 * Retrieves the commands executed since the last memento front disk and
+	 * re-executes them.
+	 */
 	private void executeCommandsFromFile() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(commandFile));
@@ -153,6 +191,10 @@ public class CommandDecorator extends InventoryDecorator {
 		}
 	}
 	
+	/**
+	 * Overwrite the file on disk that stores the commands executed
+	 * since last memento.
+	 */
 	private void deleteCommands() {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(commandFile));

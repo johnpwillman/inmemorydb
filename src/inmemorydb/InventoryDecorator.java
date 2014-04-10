@@ -15,6 +15,12 @@ public class InventoryDecorator extends AbstractInventory {
 	
 	private Inventory decoratedInventory;
 	
+	/**
+	 * InventoryDecorator contains reference to real Inventory 
+	 * object and defers all method calls to this decorated
+	 * Inventory's methods.
+	 * @param inventoryToDecorate
+	 */
 	public InventoryDecorator(Inventory inventoryToDecorate) {
 		decoratedInventory = inventoryToDecorate;
 	}
