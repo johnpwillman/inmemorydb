@@ -25,6 +25,11 @@ public class Caretaker {
 		
 	}
 	
+	/**
+	 * Serializes a memento to disk for later retrieval. Only one memento
+	 * is stored at a time.
+	 * @param m
+	 */
 	public void saveMemento(Memento m) {
 		try {
 			FileOutputStream fileOut =
@@ -41,6 +46,10 @@ public class Caretaker {
 		}
 	}
 	
+	/**
+	 * Retrieves the latest memento from disk via deserialization.
+	 * @return
+	 */
 	public Memento getMemento() {
 		Memento m = null;
 		try {

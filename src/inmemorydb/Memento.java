@@ -13,6 +13,7 @@ import java.util.Hashtable;
  */
 public class Memento implements Serializable {
 	
+	//Copy of the Movie Database at time of memento creation
 	private Hashtable<Integer, Movie> state;
 	
 	public Memento(Hashtable<Integer, Movie> stateToSave) {
