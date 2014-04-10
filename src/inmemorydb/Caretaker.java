@@ -40,6 +40,7 @@ public class Caretaker {
 			out.close();
 			fileOut.close();
 			
+			//Rename tempfile to real Memento file if successfully saved 
 			mementoFile.delete();
 			tempMementoFile.renameTo(mementoFile);
 			
