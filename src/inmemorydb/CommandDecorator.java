@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 /**
  * CommandDecorator is a child of InventoryDecorator which adds Command
@@ -23,6 +24,7 @@ public class CommandDecorator extends InventoryDecorator {
 	private Inventory decoratedInventory;
 	private Command c;
 	private File commandFile = new File("commands");
+	private File tempCommandFile = new File("tempCommands");
 	private String cmdDelim = "|";
 	private int numCommands = 0;
 	private final int maxCommands = 1000;
@@ -131,14 +133,21 @@ public class CommandDecorator extends InventoryDecorator {
 	 */
 	private void writeCommandToFile(String commandToWrite) {
 		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(commandFile, true));
+			//Save commands to temp file first
+			tempCommandFile.delete();
+			Files.copy(commandFile.toPath(), tempCommandFile.toPath());
+			
+			BufferedWriter out = new BufferedWriter(new FileWriter(tempCommandFile, true));
 			out.write(commandToWrite);
 			
 			numCommands++;
 			
 			out.newLine();
-			
 			out.close();
+			
+			//Safe save of commands
+			commandFile.delete();
+			tempCommandFile.renameTo(commandFile);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
