@@ -20,6 +20,7 @@ import java.io.ObjectOutputStream;
 public class Caretaker {
 	
 	private File mementoFile = new File("mementos");
+	private File tempMementoFile = new File("tempMementos");
 	
 	public Caretaker() {
 		
@@ -33,11 +34,15 @@ public class Caretaker {
 	public void saveMemento(Memento m) {
 		try {
 			FileOutputStream fileOut =
-			new FileOutputStream(mementoFile);
+			new FileOutputStream(tempMementoFile);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(m);
 			out.close();
 			fileOut.close();
+			
+			mementoFile.delete();
+			tempMementoFile.renameTo(mementoFile);
+			
 			System.out.println(
 					"Memento saved to '" + mementoFile.getPath() + "' file"
 					);
